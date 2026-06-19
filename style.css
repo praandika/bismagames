@@ -1,0 +1,430 @@
+*{
+box-sizing:border-box;
+}
+
+body{
+
+margin:0;
+padding:0;
+
+background:#111;
+
+font-family:Arial,sans-serif;
+
+text-align:center;
+
+color:white;
+
+overflow:hidden;
+
+}
+
+h1{
+
+margin-top:10px;
+
+color:#00AEEF;
+
+text-shadow:0 0 15px #00AEEF;
+
+}
+
+
+#hud{
+
+display:flex;
+
+justify-content:center;
+
+flex-wrap:wrap;
+
+gap:15px;
+
+margin:10px;
+
+font-size:clamp(14px,3vw,20px);
+
+}
+
+
+#game{
+
+width:min(95vw,420px);
+
+aspect-ratio: 3 / 5;
+
+height:auto;
+
+margin:auto;
+
+position:relative;
+
+overflow:hidden;
+
+border:4px solid white;
+
+border-radius:20px;
+
+background:#191919;
+
+}
+
+
+.road-line{
+
+position:absolute;
+
+width:8px;
+
+height:100%;
+
+background:white;
+
+opacity:.6;
+
+}
+
+.line1{
+
+left:140px;
+
+}
+
+.line2{
+
+left:280px;
+
+}
+
+
+#player{
+    width:17%;
+
+    aspect-ratio:70/110;
+
+    height:auto;
+
+    position:absolute;
+
+    bottom:20px;
+
+    left:0;
+
+    background-image:url("assets/player.png");
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position:center;
+
+    transition:
+        transform .25s cubic-bezier(.22,1,.36,1),
+        rotate .15s ease;
+
+    animation:
+
+        glow 1s infinite alternate,
+
+        float .25s infinite alternate;
+
+}
+
+
+
+
+#restart{
+
+padding:12px 30px;
+
+margin-top:15px;
+
+font-size:18px;
+
+display:none;
+
+cursor:pointer;
+
+}
+
+
+#rain{
+
+position:absolute;
+
+width:100%;
+
+height:100%;
+
+pointer-events:none;
+
+}
+
+/* ===================================
+   BAGIAN 2
+   Enemy + Rain + Road Animation
+=================================== */
+
+.enemy{
+
+    position:absolute;
+
+    width:17%;
+
+    aspect-ratio:70/120;
+
+    height:auto;
+
+    background:none;
+
+    background-image:url("assets/enemy.png");
+
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position:center;
+
+}
+
+.raindrop{
+
+    position:absolute;
+
+    width:2px;
+
+    height:15px;
+
+    background:white;
+
+    opacity:.5;
+
+    animation: rain .6s linear infinite;
+
+}
+
+@keyframes rain{
+
+from{
+
+transform:translateY(-20px);
+
+}
+
+to{
+
+transform:translateY(720px);
+
+}
+
+}
+
+
+@keyframes roadMove{
+
+from{
+
+background-position-y:0;
+
+}
+
+to{
+
+background-position-y:60px;
+
+}
+
+}
+
+
+#game{
+
+background:
+
+linear-gradient(
+
+to bottom,
+
+#1d1d1d 50%,
+
+#1a1a1a 50%
+
+);
+
+background-size:100% 60px;
+
+animation:roadMove .3s linear infinite;
+
+}
+
+.coin{
+
+    position:absolute;
+
+    width:10%;
+
+    aspect-ratio:1;
+
+    height:auto;
+
+    background:none;
+
+    background-image:url("assets/coin.png");
+
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position:center;
+
+}
+
+#gameOverPopup{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,.75);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:999;
+
+}
+
+
+.popup-box{
+
+    width:320px;
+
+    background:#222;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    border:2px solid #00AEEF;
+
+    box-shadow:
+
+        0 0 20px #00AEEF,
+
+        0 0 50px #00AEEF55;
+
+}
+
+
+.popup-box h2{
+
+    color:#ff4444;
+
+    margin-top:0;
+
+}
+
+
+.popup-box p{
+
+    font-size:20px;
+
+}
+
+
+#restartBtn{
+
+    margin-top:20px;
+
+    padding:12px 30px;
+
+    font-size:18px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    background:#00AEEF;
+
+    color:white;
+
+    transition:.2s;
+
+}
+
+
+#restartBtn:hover{
+
+    transform:scale(1.05);
+
+}
+
+@keyframes glow{
+
+    from{
+
+        filter:
+
+        drop-shadow(0 0 2px #00AEEF)
+
+        drop-shadow(0 0 4px #00AEEF);
+
+    }
+
+    to{
+
+        filter:
+
+        drop-shadow(0 0 2px #00AEEF)
+
+        drop-shadow(0 0 4px #00AEEF)
+
+        drop-shadow(0 0 6px #00AEEF);
+
+    }
+
+}
+
+@keyframes float{
+
+    from{
+
+        margin-bottom:0;
+
+    }
+
+    to{
+
+        margin-bottom:4px;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    h1{
+
+        font-size:22px;
+
+    }
+
+    #hud{
+
+        gap:10px;
+
+        font-size:14px;
+
+    }
+
+    #restart{
+
+        font-size:16px;
+
+        padding:10px 20px;
+
+    }
+
+}
