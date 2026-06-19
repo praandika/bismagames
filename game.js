@@ -64,39 +64,46 @@ highEl.innerText=highscore;
 
 player.style.left=lanes[currentLane]+"px";
 
-
 document.addEventListener("keydown",(e)=>{
 
-if(gameOver) return;
+    if(e.key==="ArrowLeft"){
 
+        movePlayer("left");
 
-if(e.key==="ArrowLeft" && currentLane>0){
+    }
 
-currentLane--;
+    if(e.key==="ArrowRight"){
 
-}
+        movePlayer("right");
 
-
-if(e.key==="ArrowRight" && currentLane<2){
-
-currentLane++;
-
-}
-
-
-player.style.left=lanes[currentLane]+"px";
+    }
 
 });
 
+let touchStartX = 0;
+
+game.addEventListener("touchstart",(e)=>{
+
+    if(gameOver) return;
+
+    const touchX = e.touches[0].clientX;
+
+    const rect = game.getBoundingClientRect();
+
+    const middle = rect.left + rect.width / 2;
 
 
-restartBtn.onclick=()=>{
+    if(touchX < middle){
 
-location.reload();
+        movePlayer("left");
 
-}
+    }else{
 
+        movePlayer("right");
 
+    }
+
+},{passive:true});
 
 function updateLevel(){
 
@@ -141,7 +148,39 @@ updateLevel();
 
 }
 
+function movePlayer(direction){
 
+    if(gameOver) return;
+
+
+    if(direction==="left" && currentLane>0){
+
+        currentLane--;
+
+        player.style.rotate="-10deg";
+
+    }
+
+
+    if(direction==="right" && currentLane<2){
+
+        currentLane++;
+
+        player.style.rotate="10deg";
+
+    }
+
+
+    player.style.left = lanes[currentLane]+"px";
+
+
+    setTimeout(()=>{
+
+        player.style.rotate="0deg";
+
+    },120);
+
+}
 
 function endGame(){
 
