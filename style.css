@@ -19,7 +19,7 @@ body {
 
     touch-action: none;
 
-    /* overscroll-behavior: none; */
+    overscroll-behavior: none;
 
 }
 
