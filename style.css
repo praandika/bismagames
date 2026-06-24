@@ -1,132 +1,132 @@
-*{
-box-sizing:border-box;
+* {
+    box-sizing: border-box;
 }
 
-body{
+body {
 
-margin:0;
-padding:0;
+    margin: 0;
+    padding: 0;
 
-background:#111;
+    background: #111;
 
-font-family:Arial,sans-serif;
+    font-family: Arial, sans-serif;
 
-text-align:center;
+    text-align: center;
 
-color:white;
+    color: white;
 
-overflow:hidden;
+    overflow: hidden;
 
-touch-action:none;
+    touch-action: none;
 
-overscroll-behavior:none;
-
-}
-
-h1{
-
-margin-top:10px;
-
-color:#00AEEF;
-
-text-shadow:0 0 15px #00AEEF;
+    /* overscroll-behavior: none; */
 
 }
 
+h1 {
 
-#hud{
+    margin-top: 10px;
 
-display:flex;
+    color: #00AEEF;
 
-justify-content:center;
-
-flex-wrap:wrap;
-
-gap:15px;
-
-margin:10px;
-
-font-size:clamp(14px,3vw,20px);
+    text-shadow: 0 0 15px #00AEEF;
 
 }
 
 
-#game{
+#hud {
 
-width:min(95vw,420px);
+    display: flex;
 
-aspect-ratio: 3 / 5;
+    justify-content: center;
 
-height:auto;
+    flex-wrap: wrap;
 
-margin:auto;
+    gap: 15px;
 
-position:relative;
+    margin: 10px;
 
-overflow:hidden;
-
-border:4px solid white;
-
-border-radius:20px;
-
-background:#191919;
-
-touch-action:none;
-
--webkit-user-select:none;
-
-user-select:none;
+    font-size: clamp(14px, 3vw, 20px);
 
 }
 
 
-.road-line{
+#game {
 
-position:absolute;
+    width: min(95vw, 420px);
 
-width:8px;
+    aspect-ratio: 3 / 5;
 
-height:100%;
+    height: auto;
 
-background:white;
+    margin: auto;
 
-opacity:.6;
+    position: relative;
+
+    overflow: hidden;
+
+    border: 4px solid white;
+
+    border-radius: 20px;
+
+    background: #191919;
+
+    touch-action: none;
+
+    -webkit-user-select: none;
+
+    user-select: none;
 
 }
 
-.line1{
 
-left:140px;
+.road-line {
+
+    position: absolute;
+
+    width: 8px;
+
+    height: 100%;
+
+    background: white;
+
+    opacity: .6;
 
 }
 
-.line2{
+.line1 {
 
-left:280px;
+    left: 140px;
+
+}
+
+.line2 {
+
+    left: 280px;
 
 }
 
 
-#player{
-    width:17%;
+#player {
+    width: 17%;
 
-    aspect-ratio:70/110;
+    aspect-ratio: 70/110;
 
-    height:auto;
+    height: auto;
 
-    position:absolute;
+    position: absolute;
 
-    bottom:20px;
+    bottom: 20px;
 
-    left:0;
+    left: 0;
 
-    background-image:url("assets/player.png");
-    background-size:contain;
-    background-repeat:no-repeat;
-    background-position:center;
+    background-image: url("assets/player.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 
     transition:
-        transform .25s cubic-bezier(.22,1,.36,1),
+        transform .25s cubic-bezier(.22, 1, .36, 1),
         rotate .15s ease;
 
     animation:
@@ -140,30 +140,30 @@ left:280px;
 
 
 
-#restart{
+#restart {
 
-padding:12px 30px;
+    padding: 12px 30px;
 
-margin-top:15px;
+    margin-top: 15px;
 
-font-size:18px;
+    font-size: 18px;
 
-display:none;
+    display: none;
 
-cursor:pointer;
+    cursor: pointer;
 
 }
 
 
-#rain{
+#rain {
 
-position:absolute;
+    position: absolute;
 
-width:100%;
+    width: 100%;
 
-height:100%;
+    height: 100%;
 
-pointer-events:none;
+    pointer-events: none;
 
 }
 
@@ -172,150 +172,146 @@ pointer-events:none;
    Enemy + Rain + Road Animation
 =================================== */
 
-.enemy{
+.enemy {
 
-    position:absolute;
+    position: absolute;
 
-    width:17%;
+    width: 17%;
 
-    aspect-ratio:70/120;
+    aspect-ratio: 70/120;
 
-    height:auto;
+    height: auto;
 
-    background:none;
+    background: none;
 
-    background-image:url("assets/enemy.png");
+    background-image: url("assets/enemy.png");
 
-    background-size:contain;
-    background-repeat:no-repeat;
-    background-position:center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 
 }
 
-.raindrop{
+.raindrop {
 
-    position:absolute;
+    position: absolute;
 
-    width:2px;
+    width: 2px;
 
-    height:15px;
+    height: 15px;
 
-    background:white;
+    background: white;
 
-    opacity:.5;
+    opacity: .5;
 
     animation: rain .6s linear infinite;
 
 }
 
-@keyframes rain{
+@keyframes rain {
 
-from{
+    from {
 
-transform:translateY(-20px);
+        transform: translateY(-20px);
 
-}
+    }
 
-to{
+    to {
 
-transform:translateY(720px);
+        transform: translateY(720px);
 
-}
-
-}
-
-
-@keyframes roadMove{
-
-from{
-
-background-position-y:0;
-
-}
-
-to{
-
-background-position-y:60px;
-
-}
+    }
 
 }
 
 
-#game{
+@keyframes roadMove {
 
-background:
+    from {
 
-linear-gradient(
+        background-position-y: 0;
 
-to bottom,
+    }
 
-#1d1d1d 50%,
+    to {
 
-#1a1a1a 50%
+        background-position-y: 60px;
 
-);
-
-background-size:100% 60px;
-
-animation:roadMove .3s linear infinite;
-
-}
-
-.coin{
-
-    position:absolute;
-
-    width:10%;
-
-    aspect-ratio:1;
-
-    height:auto;
-
-    background:none;
-
-    background-image:url("assets/coin.png");
-
-    background-size:contain;
-    background-repeat:no-repeat;
-    background-position:center;
-
-}
-
-#gameOverPopup{
-
-    position:fixed;
-
-    top:0;
-    left:0;
-
-    width:100%;
-    height:100%;
-
-    background:rgba(0,0,0,.75);
-
-    display:none;
-
-    justify-content:center;
-
-    align-items:center;
-
-    z-index:999;
+    }
 
 }
 
 
-.popup-box{
+#game {
 
-    width:320px;
+    background:
 
-    background:#222;
+        linear-gradient(to bottom,
 
-    padding:30px;
+            #1d1d1d 50%,
 
-    border-radius:20px;
+            #1a1a1a 50%);
 
-    border:2px solid #00AEEF;
+    background-size: 100% 60px;
+
+    animation: roadMove .3s linear infinite;
+
+}
+
+.coin {
+
+    position: absolute;
+
+    width: 10%;
+
+    aspect-ratio: 1;
+
+    height: auto;
+
+    background: none;
+
+    background-image: url("assets/coin.png");
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+#gameOverPopup {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, .75);
+
+    display: none;
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 999;
+
+}
+
+
+.popup-box {
+
+    width: 320px;
+
+    background: #222;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    border: 2px solid #00AEEF;
 
     box-shadow:
 
@@ -326,147 +322,237 @@ animation:roadMove .3s linear infinite;
 }
 
 
-.popup-box h2{
+.popup-box h2 {
 
-    color:#ff4444;
+    color: #ff4444;
 
-    margin-top:0;
-
-}
-
-
-.popup-box p{
-
-    font-size:20px;
+    margin-top: 0;
 
 }
 
 
-#restartBtn{
+.popup-box p {
 
-    margin-top:20px;
-
-    padding:12px 30px;
-
-    font-size:18px;
-
-    border:none;
-
-    border-radius:10px;
-
-    cursor:pointer;
-
-    background:#00AEEF;
-
-    color:white;
-
-    transition:.2s;
+    font-size: 20px;
 
 }
 
 
-#restartBtn:hover{
+#restartBtn {
 
-    transform:scale(1.05);
+    margin-top: 20px;
 
-}
+    padding: 12px 30px;
 
-#controls{
+    font-size: 18px;
 
-    margin-top:15px;
+    border: none;
 
-    display:flex;
+    border-radius: 10px;
 
-    justify-content:center;
+    cursor: pointer;
 
-    gap:40px;
+    background: #00AEEF;
 
-}
+    color: white;
 
-#controls button{
-
-    width:70px;
-
-    height:70px;
-
-    border:none;
-
-    border-radius:50%;
-
-    font-size:30px;
-
-    background:#00AEEF;
-
-    color:white;
-
-    box-shadow:0 0 20px #00AEEF;
+    transition: .2s;
 
 }
 
-@keyframes glow{
 
-    from{
+#restartBtn:hover {
+
+    transform: scale(1.05);
+
+}
+
+#controls {
+
+    margin-top: 15px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 40px;
+
+}
+
+#controls button {
+
+    width: 70px;
+
+    height: 70px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    font-size: 30px;
+
+    background: #00AEEF;
+
+    color: white;
+
+    box-shadow: 0 0 20px #00AEEF;
+
+}
+
+@keyframes glow {
+
+    from {
 
         filter:
 
-        drop-shadow(0 0 2px #00AEEF)
-
-        drop-shadow(0 0 4px #00AEEF);
+            drop-shadow(0 0 2px #00AEEF) drop-shadow(0 0 4px #00AEEF);
 
     }
 
-    to{
+    to {
 
         filter:
 
-        drop-shadow(0 0 2px #00AEEF)
-
-        drop-shadow(0 0 4px #00AEEF)
-
-        drop-shadow(0 0 6px #00AEEF);
+            drop-shadow(0 0 2px #00AEEF) drop-shadow(0 0 4px #00AEEF) drop-shadow(0 0 6px #00AEEF);
 
     }
 
 }
 
-@keyframes float{
+@keyframes float {
 
-    from{
+    from {
 
-        margin-bottom:0;
+        margin-bottom: 0;
 
     }
 
-    to{
+    to {
 
-        margin-bottom:4px;
+        margin-bottom: 4px;
 
     }
 
 }
 
-@media (max-width:768px){
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+    #game {
 
-    h1{
+        aspect-ratio: 3 / 4.5;
 
-        font-size:22px;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    #game {
+
+        width: min(95vw, 320px);
+
+        aspect-ratio: 2.5 / 3.5;
 
     }
 
-    #hud{
+    #hud {
 
-        gap:10px;
+        gap: 15px;
 
-        font-size:14px;
+        margin: 10px;
 
-    }
-
-    #restart{
-
-        font-size:16px;
-
-        padding:10px 20px;
+        font-size: clamp(14px, 3vw, 15px);
 
     }
 
+    img {
+        width: 200px;
+    }
+}
+
+@media screen and (min-width: 426px) and (max-width: 768px) {
+    #game {
+
+        width: min(95vw, 320px);
+
+        aspect-ratio: 2.5 / 3.5;
+
+    }
+
+    #hud {
+
+        gap: 15px;
+
+        margin: 10px;
+
+        font-size: clamp(14px, 3vw, 15px);
+
+    }
+
+    img {
+        width: 200px;
+    }
+}
+
+@media screen and (min-width: 376px) and (max-width: 425px) {
+    #game {
+
+        width: min(90vw, 265px);
+
+    }
+
+    #hud {
+
+        gap: 15px;
+
+        margin: 10px;
+
+        font-size: clamp(14px, 3vw, 20px);
+
+    }
+
+    img {
+        width: 200px;
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width: 375px) {
+    #game {
+
+        width: min(90vw, 265px);
+
+    }
+
+    #hud {
+
+        gap: 15px;
+
+        margin: 10px;
+
+        font-size: clamp(14px, 3vw, 20px);
+
+    }
+
+    img {
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    #game {
+
+        width: min(90vw, 265px);
+
+    }
+
+    #hud {
+
+        gap: 15px;
+
+        margin: 10px;
+
+        font-size: clamp(14px, 3vw, 20px);
+
+    }
+
+    img {
+        width: 200px;
+    }
 }
